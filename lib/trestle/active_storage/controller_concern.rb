@@ -31,7 +31,7 @@ module Trestle
 
             if attachment.respond_to?(:each)
               attachment.each do |att|
-                att.purge if instance.try("delete_#{field}_#{att.blob_id}") == '1'
+                att.purge if instance.try("delete_#{field}_#{att.blob_id.gsub('-', '')}") == '1'
               end
             else
               instance.send(field).purge if instance.try("delete_#{field}") == '1'
