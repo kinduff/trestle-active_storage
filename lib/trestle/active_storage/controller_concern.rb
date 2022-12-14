@@ -17,7 +17,7 @@ module Trestle
 
             if attachment.respond_to?(:each)
               attachment.each do |att|
-                instance.class.send(:attr_accessor, "delete_#{field}_#{att.blob_id}")
+                instance.class.send(:attr_accessor, "delete_#{field}_#{att.blob_id.gsub('-', '')}")
               end
             else
               instance.class.send(:attr_accessor, "delete_#{field}")
